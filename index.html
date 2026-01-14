@@ -32,5 +32,21 @@
 <a href="https://www.linkedin.com/in/shushil-maddeshiya-966ba9355">LinkedIn</a></p>
   <p>
 <a href="https://drive.google.com/file/d/16Ylx9yajFu1xkJ8Y6zIt2IuHNsk8ADYC/view">My Resume</a></p>
+
+
+  <h3>Total Visitors: <span id="visitorCount">0</span></h3>
+
+  <script>
+    let count = localStorage.getItem("visitorCount");
+
+    if (count === null) {
+      count = 1;
+    } else {
+      count = Number(count) + 1;
+    }
+
+    localStorage.setItem("visitorCount", count);
+    document.getElementById("visitorCount").innerText = count;
+  </script>
 </body>
 </html>
