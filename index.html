@@ -80,5 +80,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<script>
+fetch("https://api.countapi.xyz/hit/maddeshiya-portfolio/visits")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("visitorCount").innerText = data.value;
+  })
+  .catch(() => {
+    document.getElementById("visitorCount").innerText = "Error";
+  });
+</script>
+
 </body>
 </html>
