@@ -50,20 +50,25 @@ JS    █████    50%
 
 <bottom><center>
 
-  <h3>Total Visitors: <span id="visitorCount">0</span></h3>
+  <div id="visitor-count">Loading visitors...</div>
 
-  <script>
-    let count = localStorage.getItem("visitorCount");
+<script>
+  
+  const NAMESPACE = 'maddeshiyashushil01-beep';
+  const KEY = 'portfolio'; // any key name
+  const API = `https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
 
-    if (count === null) {
-      count = 1;
-    } else {
-      count = Number(count) + 1;
-    }
-
-    localStorage.setItem("visitorCount", count);
-    document.getElementById("visitorCount").innerText = count;
-  </script>
+  fetch(API)
+    .then(r => r.json())
+    .then(data => {
+      // data.value has the current count
+      document.getElementById('visitor-count').innerText = 'Visitors: ' + data.value;
+    })
+    .catch(err => {
+      console.error('CountAPI error', err);
+      document.getElementById('visitor-count').innerText = 'Visitors: —';
+    });
+</script>
 
 
 
