@@ -49,14 +49,8 @@ JS    █████    50%
 <link rel="stylesheet" href="index.css">
 
 <bottom><center>
-<h3>Total Visitors: <span id="visitorCount">Loading...</span></h3>
+<h3>Total Visitors: <span id="visitorCount">0</span></h3>
 
-<script>
-fetch('https://api.countapi.xyz/hit/shushil-portfolio/visits')
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById("visitorCount").innerText = data.value;
-  });
 </script>
 
  </center></bottom>
@@ -69,6 +63,21 @@ fetch('https://api.countapi.xyz/hit/shushil-portfolio/visits')
   function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
   }
+
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("https://api.countapi.xyz/hit/shushil-portfolio-github/visits")
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("visitorCount").innerText = data.value;
+    })
+    .catch(error => {
+      document.getElementById("visitorCount").innerText = "Error";
+      console.error(error);
+    });
+});
 </script>
 
 </body>
